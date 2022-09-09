@@ -31,5 +31,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_first" />
+        <ProgressBar
+            android:id="@+id/exoPlayerProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/exoPlayerPv"
+            app:layout_constraintEnd_toEndOf="@+id/exoPlayerPv"
+            app:layout_constraintTop_toTopOf="@+id/exoPlayerPv"
+            app:layout_constraintBottom_toBottomOf="@+id/exoPlayerPv"
+            android:visibility="invisible"
+            />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

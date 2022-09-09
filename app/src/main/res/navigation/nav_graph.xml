@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_exoPlayerFragment"
+            app:destination="@id/exoPlayerFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -25,4 +28,9 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/exoPlayerFragment"
+        android:name="com.example.exoplayerplayground.exo_player_business.ExoPlayerFragment"
+        android:label="fragment_exo_player"
+        tools:layout="@layout/fragment_exo_player" />
 </navigation>

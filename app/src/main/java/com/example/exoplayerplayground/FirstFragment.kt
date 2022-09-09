@@ -2,12 +2,14 @@ package com.example.exoplayerplayground
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -16,7 +18,6 @@ import androidx.media3.common.MimeTypes
 import androidx.media3.common.Player
 import androidx.media3.common.util.Util
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.exoplayer.analytics.AnalyticsListener
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.navigation.fragment.findNavController
 import com.example.exoplayerplayground.databinding.FragmentFirstBinding
@@ -44,6 +45,15 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val display = (requireContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager).getDefaultDisplay()
+        val point = Point()
+        display.getSize(point)
+        val screenSurfaceDefaultHeight= point.y
+
+
+        Log.d(TAG, "onCreateView: screen height is -> $screenSurfaceDefaultHeight")
+
+
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -54,7 +64,14 @@ class FirstFragment : Fragment() {
 
 
         binding.buttonFirst.setOnClickListener {
-            //player?.play()
+           // val action = NewsListFragmentDirections.actionNewsListFragmentToNewsDetailFragment(it)
+           // findNavController().navigate(action)
+
+           // findNavController().navigate(action)
+
+            val action = FirstFragmentDirections.actionFirstFragmentToExoPlayerFragment()
+            findNavController().navigate(action)
+
         }
     }
 
@@ -201,8 +218,15 @@ class FirstFragment : Fragment() {
         override fun onPlaybackStateChanged(playbackState: Int) {
             val stateString: String = when (playbackState) {
                 ExoPlayer.STATE_IDLE -> "ExoPlayer.STATE_IDLE      -"
-                ExoPlayer.STATE_BUFFERING -> "ExoPlayer.STATE_BUFFERING -"
-                ExoPlayer.STATE_READY -> "ExoPlayer.STATE_READY     -"
+                ExoPlayer.STATE_BUFFERING -> {
+                    showProgressBar()
+                    "ExoPlayer.STATE_BUFFERING -"
+                }
+                ExoPlayer.STATE_READY -> {
+                    hideProgressBar()
+                    "ExoPlayer.STATE_READY     -"
+                }
+
                 ExoPlayer.STATE_ENDED -> "ExoPlayer.STATE_ENDED     -"
                 else -> "UNKNOWN_STATE             -"
             }
@@ -213,10 +237,15 @@ class FirstFragment : Fragment() {
         }
     }
 
+    private fun showProgressBar(){
+       binding.exoPlayerProgressBar.visibility = View.VISIBLE
+    }
 
-    private fun createBackStateListener() = object : AnalyticsListener {
+    private fun hideProgressBar(){
+        binding.exoPlayerProgressBar.visibility = View.INVISIBLE
 
     }
+
 
 
     override fun onDestroyView() {

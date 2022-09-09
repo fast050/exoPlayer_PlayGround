@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProgressbarIndicator">
+        <attr name="pb_width" format="dimension" />
+        <attr name="pb_height" format="dimension" />
+        <attr name="pb_margin" format="dimension" />
+    </declare-styleable>
+
+</resources>
