@@ -1,4 +1,4 @@
-package com.example.exoplayerplayground.exo_player_business
+package com.example.exoplayerplayground.exo_player_business.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -11,23 +11,25 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.exoplayerplayground.databinding.FragmentExoPlayerBinding
+import com.example.exoplayerplayground.exo_player_business.*
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 /** mock test screen to implement player view in service details**/
-class ExoPlayerFragment : Fragment(),MediaAdapter.PlayerState {
+@AndroidEntryPoint
+class ExoPlayerFragment : Fragment(), MediaAdapter.PlayerState {
 
    private var _binding: FragmentExoPlayerBinding? = null
    private val binding get() = _binding!!
    private lateinit var exoPlayer: ExoPlayer
 
-   private val cacheDataSourceFactory: CacheDataSource.Factory by lazy {
-       PreLoadVideoBuilder.getCacheDataSourceFactory(requireContext())
-   }
+   @Inject
+    lateinit var cacheDataSourceFactory: CacheDataSource.Factory
    private lateinit var adapter: MediaAdapter
 
-   private val preloadVideos: PreloadVideos by lazy {
-       PreLoadVideoBuilder.getPreLoad(requireContext())
-   }
+   @Inject
+    lateinit var preloadVideos: PreloadVideos
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

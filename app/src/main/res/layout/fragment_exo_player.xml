@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".exo_player_business.ExoPlayerFragment">
+    tools:context=".exo_player_business.ui.ExoPlayerFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mediaRv"

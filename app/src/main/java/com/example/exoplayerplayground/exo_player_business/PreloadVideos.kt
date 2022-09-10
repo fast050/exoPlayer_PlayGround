@@ -6,15 +6,18 @@ import android.util.Log
 import androidx.media3.datasource.DataSpec
 import androidx.media3.datasource.cache.CacheDataSource
 import androidx.media3.datasource.cache.CacheWriter
+import dagger.Provides
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * cache video from url with coroutine
  */
-class PreloadVideos (
-    val context: Context,
+class PreloadVideos @Inject constructor(
+    @ApplicationContext val context: Context,
     private val cacheDataSourceFactory: CacheDataSource.Factory
 ) {
 

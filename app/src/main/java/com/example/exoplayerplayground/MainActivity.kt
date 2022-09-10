@@ -12,7 +12,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.example.exoplayerplayground.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

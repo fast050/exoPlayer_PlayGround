@@ -10,6 +10,7 @@ import androidx.media3.datasource.cache.SimpleCache
 import com.example.exoplayerplayground.R
 import java.io.File
 
+/*
 var cacheData : CacheDataSource.Factory? = null
 var simpleCache:SimpleCache?=null
 
@@ -101,4 +102,4 @@ object PreLoadVideoBuilder {
         return StandaloneDatabaseProvider(context)
     }
 
-}
+}*/

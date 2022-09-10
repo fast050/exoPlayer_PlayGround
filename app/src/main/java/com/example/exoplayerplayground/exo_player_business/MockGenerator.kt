@@ -31,13 +31,13 @@ object MockGenerator {
 
 
     val mediaList = listOf(
-        MockMediaResponse("", 0, image1, url3 + videoExt, url3 + jpgExt),
-        MockMediaResponse("", 0, image2, url2 + videoExt, url2 + jpgExt),
-        MockMediaResponse("", 0, image3, url1 + videoExt, url1 + jpgExt),
-        MockMediaResponse("", 1, image1, url1 + videoExt, url1 + jpgExt),
-        MockMediaResponse("", 0, image2, url3 + videoExt, url3 + jpgExt),
-        MockMediaResponse("", 1, image3, url2 + videoExt, url2 + jpgExt),
-        MockMediaResponse("", 0, image1, url1 + videoExt, url1 + jpgExt)
+        MockMediaResponse("", 0, colorOrangeUrl, url3 + videoExt, url3 + jpgExt),
+        MockMediaResponse("", 0, colorGreenUrl, url2 + videoExt, url2 + jpgExt),
+        MockMediaResponse("", 0, colorBlueUrl, url1 + videoExt, url1 + jpgExt),
+        MockMediaResponse("", 1, colorGrayUrl, url1 + videoExt, url1 + jpgExt),
+        MockMediaResponse("", 0, colorGreenUrl, url3 + videoExt, url3 + jpgExt),
+        MockMediaResponse("", 1, colorOrangeUrl, url2 + videoExt, url2 + jpgExt),
+        MockMediaResponse("", 0, colorGrayUrl, url1 + videoExt, url1 + jpgExt)
     )
 
 

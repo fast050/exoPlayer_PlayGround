@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/exoPlayerFragment"
-        android:name="com.example.exoplayerplayground.exo_player_business.ExoPlayerFragment"
+        android:name="com.example.exoplayerplayground.exo_player_business.ui.ExoPlayerFragment"
         android:label="fragment_exo_player"
         tools:layout="@layout/fragment_exo_player" />
 </navigation>

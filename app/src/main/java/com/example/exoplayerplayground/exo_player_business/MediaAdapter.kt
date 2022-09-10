@@ -18,9 +18,11 @@ import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.exoplayerplayground.R
 import com.example.exoplayerplayground.databinding.ItemMediaImageBinding
 import com.example.exoplayerplayground.databinding.ItemMediaPlayerBinding
+import javax.inject.Inject
 
 /**
  * use for images and player
@@ -29,8 +31,7 @@ class MediaAdapter(
     private val exoPlayer: ExoPlayer,
     private val cacheDataSourceFactory: CacheDataSource.Factory,
     private val playerState: PlayerState
-) :
-    ListAdapter<MockMediaResponse, RecyclerView.ViewHolder>(BaseDiffUtilCallBack()),
+) : ListAdapter<MockMediaResponse, RecyclerView.ViewHolder>(BaseDiffUtilCallBack()),
     Player.Listener {
 
     private val playerVhArray: SparseArray<PlayerVH> = SparseArray()
@@ -192,8 +193,10 @@ class MediaAdapter(
         fun onBind(item: MockMediaResponse) {
             this.item = item
 
-//            binding.setVariable(BR.item, item)
-//            binding.executePendingBindings()
+           /* binding.setVariable(BR.item, item)
+            binding.executePendingBindings()*/
+            Glide.with(binding.root.context).load(item.thumbnailUrl).into(binding.thumbnailIv)
+
         }
 
     }
@@ -202,8 +205,11 @@ class MediaAdapter(
     inner class ImageVH(val binding: ItemMediaImageBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: MockMediaResponse) {
-//            binding.setVariable(BR.item, item)
-//            binding.executePendingBindings()
+          /*  binding.setVariable(BR.item, item)
+            binding.executePendingBindings()*/
+
+           Glide.with(binding.root.context).load(item.image).into(binding.photoIv)
+
         }
     }
 
